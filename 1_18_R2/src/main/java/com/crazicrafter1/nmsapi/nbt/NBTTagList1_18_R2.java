@@ -1,4 +1,4 @@
-package com.crazicrafter1.nmsapi;
+package com.crazicrafter1.nmsapi.nbt;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
@@ -34,7 +34,7 @@ public class NBTTagList1_18_R2 extends INBTTagList {
     }
 
     @Override
-    public INBTTagCompound getNBTTagCompound(int index) {
+    public INBTTagCompound getCompound(int index) {
         return new NBTTagCompound1_18_R2(instance.a(index));
     }
 

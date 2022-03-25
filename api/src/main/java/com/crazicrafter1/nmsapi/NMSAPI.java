@@ -1,16 +1,18 @@
 package com.crazicrafter1.nmsapi;
 
+import com.crazicrafter1.nmsapi.nbt.INBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
-public class NBTAPI {
+public enum NMSAPI {
+    ;
 
-    private static final INBTTagCompound COMPOUND_impl = new NBTAPI().match();
+    private static final INBTTagCompound COMPOUND_impl = matchNBT();
 
-    private INBTTagCompound match() {
+    private static INBTTagCompound matchNBT() {
         final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].substring(1);
         try {
-            return (INBTTagCompound) Class.forName(getClass().getPackage().getName() + "." + serverVersion).newInstance();
+            return (INBTTagCompound) Class.forName(INBTTagCompound.class.getPackage().getName() + ".NBTTagCompound" + serverVersion).newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -27,4 +29,11 @@ public class NBTAPI {
     public static INBTTagCompound getNBT(ItemStack itemStack) {
         return COMPOUND_impl.getNBT(itemStack);
     }
+
+    public static INBTTagCompound getOrCreateNBT(ItemStack itemStack) {
+        return COMPOUND_impl.getOrCreateNBT(itemStack);
+    }
+
+    //public static getItemStack()
+
 }

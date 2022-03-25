@@ -1,4 +1,4 @@
-package com.crazicrafter1.nmsapi;
+package com.crazicrafter1.nmsapi.nbt;
 
 import org.bukkit.Bukkit;
 

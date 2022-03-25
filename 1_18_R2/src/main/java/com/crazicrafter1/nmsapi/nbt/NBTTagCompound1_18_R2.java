@@ -1,17 +1,16 @@
-package com.crazicrafter1.nmsapi;
+package com.crazicrafter1.nmsapi.nbt;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.nbt.MojangsonParser;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagLongArray;
 import org.bukkit.craftbukkit.v1_18_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Set;
 import java.util.UUID;
 
-public final class NBTTagCompound1_18_R2 extends INBTTagCompound {
+public final class NBTTagCompound1_18_R2 implements INBTTagCompound {
 
     @Override
     public Object getInstance() {
@@ -23,18 +22,8 @@ public final class NBTTagCompound1_18_R2 extends INBTTagCompound {
     public NBTTagCompound1_18_R2() {
         this(new NBTTagCompound());
     }
-    public NBTTagCompound1_18_R2(String s) {
-        try {
-            this.instance = MojangsonParser.a(s);
-        } catch (CommandSyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public NBTTagCompound1_18_R2(NBTTagCompound instance) {
         this.instance = instance;
-    }
-    public NBTTagCompound1_18_R2(ItemStack itemStack) {
-        this(CraftItemStack.asNMSCopy(itemStack).t());
     }
 
     @Override
@@ -238,11 +227,22 @@ public final class NBTTagCompound1_18_R2 extends INBTTagCompound {
 
     @Override
     public INBTTagCompound getNBT(String s) {
-        return new NBTTagCompound1_18_R2(s);
+        try {
+            return new NBTTagCompound1_18_R2(MojangsonParser.a(s));
+        } catch (CommandSyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public INBTTagCompound getNBT(ItemStack itemStack) {
-        return new NBTTagCompound1_18_R2(itemStack);
+        return new NBTTagCompound1_18_R2(
+                CraftItemStack.asNMSCopy(itemStack).t());
+    }
+
+    @Override
+    public INBTTagCompound getOrCreateNBT(ItemStack itemStack) {
+        return new NBTTagCompound1_18_R2(
+                CraftItemStack.asNMSCopy(itemStack).u());
     }
 }

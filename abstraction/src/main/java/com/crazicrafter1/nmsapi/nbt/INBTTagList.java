@@ -1,7 +1,7 @@
-package com.crazicrafter1.nmsapi;
+package com.crazicrafter1.nmsapi.nbt;
 
 public abstract class INBTTagList extends INBTList<INBTBase> {
-    abstract public INBTTagCompound getNBTTagCompound(int index);
+    abstract public INBTTagCompound getCompound(int index);
     abstract public INBTTagList getNBTTagList(int index);
     abstract public short getShort(int index);
     abstract public int getInt(int index);
