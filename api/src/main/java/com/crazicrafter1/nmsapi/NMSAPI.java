@@ -4,6 +4,9 @@ import com.crazicrafter1.nmsapi.nbt.INBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public enum NMSAPI {
     ;
 
@@ -18,18 +21,22 @@ public enum NMSAPI {
         }
     }
 
+    @Nonnull
     public static INBTTagCompound getNBT() {
         return COMPOUND_impl.getNBT();
     }
 
-    public static INBTTagCompound getNBT(String s) {
-        return COMPOUND_impl.getNBT(s);
+    @Nonnull
+    public static INBTTagCompound getNBT(String json) {
+        return COMPOUND_impl.getNBT(json);
     }
 
-    public static INBTTagCompound getNBT(ItemStack itemStack) {
+    @Nullable
+    public static INBTTagCompound getNBT(@Nonnull ItemStack itemStack) {
         return COMPOUND_impl.getNBT(itemStack);
     }
 
+    @Nonnull
     public static INBTTagCompound getOrCreateNBT(ItemStack itemStack) {
         return COMPOUND_impl.getOrCreateNBT(itemStack);
     }

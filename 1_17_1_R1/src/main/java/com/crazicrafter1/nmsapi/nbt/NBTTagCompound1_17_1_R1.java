@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -235,8 +236,12 @@ public final class NBTTagCompound1_17_1_R1 implements INBTTagCompound {
 
     @Override
     public INBTTagCompound getNBT(ItemStack itemStack) {
-        return new NBTTagCompound1_17_1_R1(
-                CraftItemStack.asNMSCopy(itemStack).getTag());
+        try {
+            return new NBTTagCompound1_17_1_R1(
+                    Objects.requireNonNull(CraftItemStack.asNMSCopy(itemStack).getTag()));
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
