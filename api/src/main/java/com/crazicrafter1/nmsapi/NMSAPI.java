@@ -13,9 +13,17 @@ public enum NMSAPI {
     private static final INBTTagCompound COMPOUND_impl = matchNBT();
 
     private static INBTTagCompound matchNBT() {
+        // Assuming bukkit follows its convention, this works fine
         final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].substring(1);
+
         try {
-            return (INBTTagCompound) Class.forName(INBTTagCompound.class.getPackage().getName() + ".NBTTagCompound" + serverVersion).newInstance();
+            boolean isMohist = Bukkit.getVersion().contains("Mohist");
+
+            if (isMohist)
+                Bukkit.getLogger().info("NMSAPI: Using Mohist compatibility layer");
+
+            String base = INBTTagCompound.class.getPackage().getName() + ".NBTTagCompound" + (isMohist ? "_mohist_" : "");
+            return (INBTTagCompound) Class.forName(base + serverVersion).newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
