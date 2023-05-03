@@ -17,12 +17,12 @@ public enum NMSAPI {
         final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].substring(1);
 
         try {
-            boolean isMohist = Bukkit.getVersion().contains("Mohist");
+            //boolean isMohist = Bukkit.getVersion().contains("Mohist");
+            //if (isMohist)
+            //    Bukkit.getLogger().info("NMSAPI: Using Mohist compatibility layer");
+            //isMohist = false;
 
-            if (isMohist)
-                Bukkit.getLogger().info("NMSAPI: Using Mohist compatibility layer");
-
-            String base = INBTTagCompound.class.getPackage().getName() + ".NBTTagCompound" + (isMohist ? "_mohist_" : "");
+            String base = INBTTagCompound.class.getPackage().getName() + ".NBTTagCompound";
             return (INBTTagCompound) Class.forName(base + serverVersion).newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);

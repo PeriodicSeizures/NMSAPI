@@ -1,3 +1,7 @@
+This is redundant, I'm pretty sure Mohist has a custom classloader for plugins to interface with bukkit-nms calls (Bukkit net.minecraft.server.1_12_2_R1.item.ItemStack synonymous with Forge net.minecraft.item.ItemStack)
+
+---
+
 I don't know where else to put this, so here it is
 
 Steps for creating Mohist compatible version:
