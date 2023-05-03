@@ -17,3 +17,7 @@ src/libs
 */google-java-format.xml
 
 dependency-reduced-pom.xml
+old_mohist-1_12_2_R1/com/crazicrafter1/nmsapi/nbt/MojangsonParseException.class
+old_mohist-1_12_2_R1/com/crazicrafter1/nmsapi/nbt/MojangsonParser.class
+old_mohist-1_12_2_R1/com/crazicrafter1/nmsapi/nbt/NBTTagCompound_mohist_1_12_R1.class
+old_mohist-1_12_2_R1/com/crazicrafter1/nmsapi/nbt/NBTTagList_mohist_1_12_R1.class
