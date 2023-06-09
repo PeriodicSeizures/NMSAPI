@@ -86,6 +86,12 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+		<dependency>
+            <groupId>com.crazicrafter1</groupId>
+            <artifactId>nmsapi-1_20_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

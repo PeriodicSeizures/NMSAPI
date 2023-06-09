@@ -4,14 +4,14 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.nbt.MojangsonParser;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import org.bukkit.craftbukkit.v1_19_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_20_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
+public final class NBTTagCompound1_20_R1 implements INBTTagCompound {
 
     @Override
     public Object getInstance() {
@@ -20,10 +20,10 @@ public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
 
     private final NBTTagCompound instance;
 
-    public NBTTagCompound1_19_R3() {
+    public NBTTagCompound1_20_R1() {
         this(new NBTTagCompound());
     }
-    public NBTTagCompound1_19_R3(NBTTagCompound instance) {
+    public NBTTagCompound1_20_R1(NBTTagCompound instance) {
         this.instance = instance;
     }
 
@@ -156,12 +156,12 @@ public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
 
     @Override
     public INBTTagCompound getCompound(String k) {
-        return new NBTTagCompound1_19_R3(instance.p(k));
+        return new NBTTagCompound1_20_R1(instance.p(k));
     }
 
     @Override
     public INBTTagList getList(String k, int i) {
-        return new NBTTagList1_19_R3(instance.c(k, i));
+        return new NBTTagList1_20_R1(instance.c(k, i));
     }
 
     @Override
@@ -222,13 +222,13 @@ public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
 
     @Override
     public INBTTagCompound getNBT() {
-        return new NBTTagCompound1_19_R3();
+        return new NBTTagCompound1_20_R1();
     }
 
     @Override
     public INBTTagCompound getNBT(String s) {
         try {
-            return new NBTTagCompound1_19_R3(MojangsonParser.a(s));
+            return new NBTTagCompound1_20_R1(MojangsonParser.a(s));
         } catch (CommandSyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -237,8 +237,8 @@ public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
     @Override
     public INBTTagCompound getNBT(ItemStack itemStack) {
         try {
-            return new NBTTagCompound1_19_R3(
-                    Objects.requireNonNull(CraftItemStack.asNMSCopy(itemStack).u()));
+            return new NBTTagCompound1_20_R1(
+                    Objects.requireNonNull(CraftItemStack.asNMSCopy(itemStack).v()));
         } catch (Exception e) {
             return null;
         }
@@ -246,7 +246,7 @@ public final class NBTTagCompound1_19_R3 implements INBTTagCompound {
 
     @Override
     public INBTTagCompound getOrCreateNBT(ItemStack itemStack) {
-        return new NBTTagCompound1_19_R3(
+        return new NBTTagCompound1_20_R1(
                 CraftItemStack.asNMSCopy(itemStack).v());
     }
 }
