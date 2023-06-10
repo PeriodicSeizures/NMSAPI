@@ -238,7 +238,7 @@ public final class NBTTagCompound1_20_R1 implements INBTTagCompound {
     public INBTTagCompound getNBT(ItemStack itemStack) {
         try {
             return new NBTTagCompound1_20_R1(
-                    Objects.requireNonNull(CraftItemStack.asNMSCopy(itemStack).v()));
+                    Objects.requireNonNull(CraftItemStack.asNMSCopy(itemStack).w()));
         } catch (Exception e) {
             return null;
         }
@@ -247,6 +247,6 @@ public final class NBTTagCompound1_20_R1 implements INBTTagCompound {
     @Override
     public INBTTagCompound getOrCreateNBT(ItemStack itemStack) {
         return new NBTTagCompound1_20_R1(
-                CraftItemStack.asNMSCopy(itemStack).v());
+                CraftItemStack.asNMSCopy(itemStack).w());
     }
 }
